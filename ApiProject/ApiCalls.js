@@ -2,6 +2,7 @@ const pactum = require('pactum');
 
 describe('Test', ()=>{
 
+    
 before (()=>{
     pactum.request.setBaseUrl("https://jsonplaceholder.typicode.com")
 })
