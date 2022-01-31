@@ -1,0 +1,18 @@
+{
+  "name": "captanproject",
+  "version": "1.0.0",
+  "description": "This is for Captan Project",
+  "main": "index.js",
+  "dependencies": {
+    "jasmine-spec-reporter": "^4.2.1",
+    "pactum": "^3.1.3"
+  },
+  "devDependencies": {
+    "protractor-beautiful-reporter": "^1.2.5"
+  },
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+  "author": "Captan",
+  "license": "ISC"
+}
