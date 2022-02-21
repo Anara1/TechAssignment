@@ -1,0 +1,21 @@
+When testing Broken Hashserve application I encountered several issues
+POST to /hash:
+1. When posting a json with password key and values I noticed that key is not validated. The application should be validating both key and value of the json that it consumes.
+2. In case of a successful request, the job identifier is not returned immediately, but takes 5 seconds to be returned, and password hash is not returned at all. So i couldn't validate the hashing algorith as per requirement.
+3. When the same Password value is posted, the service should return 409 as the same password value has already been post before
+4. It was not clear what '>42' means in the documentation, please clarify. I thought it is the edge case number for the amount of requests to be made per session, but I could call the endpoint more than 50 times.
+5. Posting an empty password value or empty key value, or both in json returned 200, though should have been 400. Data has to be properly validated. 
+
+GET to /hash
+1. In the event of providing a non-existent job identifier, the response code should be 404 not 400
+2. JSON key and values are not validated, and can even both be null, but the response is still 200. Better validation requirements should be in place. The app should not be accepting an empty json, key values should be constant and not allow a change. 
+Example {"",""},{"", "angrymonkey},{"passwprd", ""},, {"passwprd", "angrymonkey}, {"password", "angry_monkey"} all returned 200
+
+Get Stats
+1. It is not clear how to test how the average time is calculated, it somehow tends to decrease when the number of requests increases. 
+2. Get Stats returns 200 even if no posts have been done and has "0" value as average time and as number of attempts
+
+Software observations: 
+
+Software does not allow multiple connections and returns:"listen tcp :8088: bind: address already in use" message.
+It was not clear how to test a pending shutdown, so that requirement needs a clarification on how to recreate a pending shutdown state.

@@ -1,0 +1,11 @@
+Test Plan
+The broken hashserve application testing approach should be automation with BDD approach for better test case visibility and reusability of each step.
+Testing would require to test each feature independenly and as a flow as the endpoints are dependent on each other in some cases.
+Tools:
+Manual API testing can be done in Postman. 
+Automation API testing: pactumJS. It is a lightweight REST API testing tool that has all the capabilities we need.
+
+Risks: PactumJS needs a proof of concept for automated server launching capability.
+Requirment list can be added with additional points as some criteria is unclear how to reproduce.
+
+
